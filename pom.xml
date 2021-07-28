@@ -12,11 +12,11 @@
 	<groupId>de.gp.finance</groupId>
 	<artifactId>data-api</artifactId>
 	<version>1.0.0</version>
-    <packaging>pom</packaging>
+	<packaging>pom</packaging>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-    <dependencyManagement>
+	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -26,14 +26,27 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-			<groupId>de.gp.finance</groupId>
-			<artifactId>data-model</artifactId>
-			<version>1.0.0</version>
+				<groupId>de.gp.finance</groupId>
+				<artifactId>data-model</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>de.gp.finance</groupId>
+				<artifactId>data-service-api</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>de.gp.finance</groupId>
+				<artifactId>data-service-jpa</artifactId>
+				<version>1.0.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-    <modules>
-    <module>data-model</module>
-    <module>data-service-api</module>
-    </modules>
+	<modules>
+		<module>data-model</module>
+		<module>data-service-api</module>
+		<module>data-service-jpa</module>
+		
+		<module>data-rest</module>
+	</modules>
 </project>
