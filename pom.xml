@@ -40,12 +40,18 @@
 				<artifactId>data-service-jpa</artifactId>
 				<version>1.0.0</version>
 			</dependency>
+			<dependency>
+				<groupId>de.gp.finance</groupId>
+				<artifactId>data-service-cloudant</artifactId>
+				<version>1.0.0</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<modules>
 		<module>data-model</module>
 		<module>data-service-api</module>
 		<module>data-service-jpa</module>
+		<module>data-service-cloudant</module>
 		<module>data-rest</module>
 	</modules>
 </project>

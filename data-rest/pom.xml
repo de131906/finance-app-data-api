@@ -19,7 +19,7 @@
 		</dependency>
 		<dependency>
 			<groupId>de.gp.finance</groupId>
-			<artifactId>data-service-jpa</artifactId>
+			<artifactId>data-service-cloudant</artifactId>
 		</dependency>
  </dependencies>
 	<build>
