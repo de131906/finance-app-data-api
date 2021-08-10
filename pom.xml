@@ -46,7 +46,6 @@
 		<module>data-model</module>
 		<module>data-service-api</module>
 		<module>data-service-jpa</module>
-		
 		<module>data-rest</module>
 	</modules>
 </project>

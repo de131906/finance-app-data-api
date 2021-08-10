@@ -1,5 +1,7 @@
 package de.gp.finance.data.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,9 +20,11 @@ import lombok.ToString;
 public class Institution extends BaseDocument {
 
 	@NonNull
+	@JsonProperty(value = "name")
 	private String name;
 	
 	@NonNull
+	@JsonProperty(value = "bic")
 	private String bic;
 	
 }

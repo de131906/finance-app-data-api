@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,9 +23,11 @@ import lombok.Setter;
 public class InstitutionEntity extends BaseEntity {
 
 	@Column(name = "name", nullable = false, unique = true)
+	@JsonProperty(value = "name")
 	private String name;
 	
 	@Column(name = "bic", nullable = false, unique = true)
+	@JsonProperty(value = "bic")
 	private String bic;
 	
 }
