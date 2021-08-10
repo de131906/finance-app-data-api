@@ -2,6 +2,7 @@ package de.gp.finance.data.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -14,19 +15,33 @@ import lombok.ToString;
 @ToString(doNotUseGetters = true)
 public abstract class BaseDocument {
 
-	@JsonAlias({"_id", "uid"})
-	private String id;
+	@JsonAlias({"id", "uid"})
+	@JsonProperty(value = "id")
+	private String _id;
+	
+	@JsonAlias({"rev"})
+	@JsonProperty(value = "rev")
+	private String _rev;
 	
 	@NonNull
 	private String docType;
 	
 	public String getId() {
-		return id;
+		return _id;
 	}
 	
-	@JsonAlias({"_id", "uid"})
+	@JsonAlias({"id", "uid"})
 	public void setId(String id) {
-		this.id = id;
+		this._id = id;
+	}
+	
+	public String getRev() {
+		return _rev;
+	}
+	
+	@JsonAlias({"rev"})
+	public void setRev(String rev) {
+		this._rev = rev;
 	}
 	
 	public String getDocType() {
@@ -39,7 +54,7 @@ public abstract class BaseDocument {
 
 	@JsonIgnore
 	public boolean isPersisted() {
-		return id != null;
+		return _id != null && _id.length() > 0;
 	}
 
 }
