@@ -10,6 +10,11 @@ import de.gp.finance.data.model.BaseDocument;
 
 public class ModelConverter {
 
+	public static <E, D extends BaseDocument> D convert(E entity, Class<D> docClass) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.readValue(mapper.writeValueAsString(entity), docClass);
+	}
+
 	public static <E, D extends BaseDocument>
 	List<D> convert(Iterable<E> entities, Class<D> docClass) throws JsonProcessingException {
 		List<D> docs = new ArrayList<>();

@@ -20,11 +20,13 @@ public class Price extends BaseDocument {
 	@NonNull
 	private String date;
 	
+	@NonNull
 	private double rate;
 	
 	@NonNull
 	private String equityId;
 	
+	@NonNull
 	private Equity equity;
 	
 	public LocalDate getDate() {

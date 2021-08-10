@@ -1,6 +1,7 @@
 package de.gp.finance.data.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,11 @@ public abstract class BaseDocument {
 	
 	public void setDocType(String docType) {
 		this.docType = docType;
+	}
+
+	@JsonIgnore
+	public boolean isPersisted() {
+		return id != null;
 	}
 
 }

@@ -21,7 +21,7 @@
 			<groupId>de.gp.finance</groupId>
 			<artifactId>data-service-jpa</artifactId>
 		</dependency>
-	</dependencies>
+ </dependencies>
 	<build>
 		<plugins>
 			<plugin>

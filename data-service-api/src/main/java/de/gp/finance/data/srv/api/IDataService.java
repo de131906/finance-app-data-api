@@ -12,7 +12,7 @@ public interface IDataService<E extends BaseDocument> {
 	
 	Optional<E> getById(String id);
 	
-	E createOrUpdate(E data);
+	E createOrUpdate(E data) throws DocumentProcessingException;
 	
-	void delete(E data);
+	void delete(E data) throws DocumentProcessingException;
 }
