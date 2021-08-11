@@ -1,6 +1,7 @@
 package de.gp.finance.data.srv.doc;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,12 @@ public class CurrencyService extends BaseService<Currency> implements IDataServi
 
     @Override
     public List<Currency> getAll() throws IOException {
-        return getAll("all", "currencies", Currency.class);
+        return getAll(Currency.class);
+    }
+
+    @Override
+    public List<Currency> getAllById(String id) throws IOException {
+        return new ArrayList<>();
     }
 
     @Override

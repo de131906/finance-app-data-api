@@ -6,13 +6,15 @@ import java.util.Optional;
 
 import de.gp.finance.data.model.BaseDocument;
 
-public interface IDataService<E extends BaseDocument> {
+public interface IDataService<D extends BaseDocument> {
 
-	List<E> getAll() throws IOException;
+	List<D> getAll() throws IOException;
+
+	List<D> getAllById(String id) throws IOException;
 	
-	Optional<E> getById(String id);
+	Optional<D> getById(String id);
 	
-	E createOrUpdate(E data) throws DocumentProcessingException;
+	D createOrUpdate(D data) throws DocumentProcessingException;
 	
-	void delete(E data) throws DocumentProcessingException;
+	void delete(D data) throws DocumentProcessingException;
 }

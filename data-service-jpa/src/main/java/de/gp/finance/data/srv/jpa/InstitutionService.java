@@ -1,6 +1,7 @@
 package de.gp.finance.data.srv.jpa;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,11 @@ public class InstitutionService implements IDataService<Institution> {
 	public List<Institution> getAll() throws IOException {
 		return ModelConverter.convert(dao.findAll(), Institution.class);
 	}
+
+	@Override
+    public List<Institution> getAllById(String id) throws IOException {
+        return new ArrayList<>();
+    }
 
 	@Override
 	public Optional<Institution> getById(String id) {

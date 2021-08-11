@@ -27,10 +27,8 @@ public class Equity extends BaseDocument {
 	@NonNull
 	private EquityType type;
 	
-	@NonNull
 	private String currencyId;
 	
-	@NonNull
 	private Currency currency;
 	
 }

@@ -1,6 +1,7 @@
 package de.gp.finance.data.srv.doc;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,13 @@ public class InstitutionService extends BaseService<Institution> implements IDat
 
     @Override
     public List<Institution> getAll() throws IOException {
-        return getAll("all", "institutions", Institution.class);
+        return getAll(Institution.class);
+        // return getAll("all", "institutions", Institution.class);
+    }
+
+    @Override
+    public List<Institution> getAllById(String id) throws IOException {
+        return new ArrayList<>();
     }
 
     @Override

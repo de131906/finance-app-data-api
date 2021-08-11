@@ -18,18 +18,12 @@ import lombok.ToString;
 public class Price extends BaseDocument {
 
 	@NonNull
-	private String date;
+	private LocalDate date;
 	
-	@NonNull
 	private double rate;
 	
-	@NonNull
 	private String equityId;
 	
-	@NonNull
 	private Equity equity;
 	
-	public LocalDate getDate() {
-		return LocalDate.parse(date);
-	}
 }

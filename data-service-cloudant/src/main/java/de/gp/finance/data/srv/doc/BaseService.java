@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 
 import com.cloudant.client.api.Database;
 import com.cloudant.client.api.model.Response;
+import com.cloudant.client.api.query.Expression;
+import com.cloudant.client.api.query.Operation;
+import com.cloudant.client.api.query.QueryBuilder;
 import com.cloudant.client.api.views.Key;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +19,17 @@ public abstract class BaseService<E extends BaseDocument> {
     
     @Autowired
 	private Database database;
-	
 
-    protected List<E> getAll(String designDoc, String viewName, Class<E> clazz) throws IOException {
-		return database.getViewRequestBuilder(designDoc, viewName)
-			.newRequest(Key.Type.STRING, Object.class).includeDocs(true)
-			.build().getResponse().getDocsAs(clazz)
-			.stream().map(e -> { return setupDocument(e); })
-			.collect(Collectors.toList());
+	protected List<E> getAll(Class<E> clazz) throws IOException {
+		return database.query(new QueryBuilder(
+            Expression.eq("docType", clazz.getSimpleName()))
+        .build(), clazz).getDocs().stream().map(e -> { return setupDocument(e); })
+		.collect(Collectors.toList());
 	}
 
 	protected E getById(String id, Class<E> clazz) {
-		return setupDocument(database.find(clazz, id));
+		E entity = database.find(clazz, id);
+		return setupDocument(entity);
 	}
 	
 	protected E createOrUpdate(E data, Class<E> clazz) {
@@ -47,6 +49,10 @@ public abstract class BaseService<E extends BaseDocument> {
 				&& entity.getRev().contentEquals(data.getRev())) {
 			database.remove(entity);
 		}
+	}
+
+	protected Database getDatabase() {
+		return database;
 	}
 
     protected abstract E setupDocument(E entity);
