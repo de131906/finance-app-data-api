@@ -7,9 +7,7 @@ import java.util.stream.Collectors;
 import com.cloudant.client.api.Database;
 import com.cloudant.client.api.model.Response;
 import com.cloudant.client.api.query.Expression;
-import com.cloudant.client.api.query.Operation;
 import com.cloudant.client.api.query.QueryBuilder;
-import com.cloudant.client.api.views.Key;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

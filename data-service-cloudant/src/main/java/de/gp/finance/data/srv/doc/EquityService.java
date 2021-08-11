@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import de.gp.finance.data.model.Currency;
 import de.gp.finance.data.model.Equity;
+import de.gp.finance.data.model.Price;
 import de.gp.finance.data.srv.api.DocumentProcessingException;
 import de.gp.finance.data.srv.api.IDataService;
 
@@ -18,6 +19,9 @@ public class EquityService extends BaseService<Equity> implements IDataService<E
 
     @Autowired
     private IDataService<Currency> currencySrv;
+
+    @Autowired
+    private IDataService<Price> priceService;
 
     @Override
     public List<Equity> getAll() throws IOException {
@@ -43,6 +47,16 @@ public class EquityService extends BaseService<Equity> implements IDataService<E
 
     @Override
     public void delete(Equity data) throws DocumentProcessingException {
+        /*
+         * delete Prices for this Equity
+         */
+        try {
+            for (Price price : priceService.getAllById(data.getId())) {
+                priceService.delete(price);
+            }
+        } catch (IOException e) {
+            throw new DocumentProcessingException(e);
+        }
         delete(data, Equity.class);
     }
 
