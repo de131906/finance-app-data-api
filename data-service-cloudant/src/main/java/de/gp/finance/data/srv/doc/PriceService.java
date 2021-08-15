@@ -31,7 +31,7 @@ public class PriceService extends BaseService<Price> implements IDataService<Pri
 
     @Override
     public List<Price> getAllById(String id) throws IOException {
-        QueryResult<Price> prices = getDatabase().query(new QueryBuilder(Operation.and(
+        QueryResult<Price> prices = database.query(new QueryBuilder(Operation.and(
             Expression.eq("docType", "Price"),
             Expression.eq("equityId", id)))
         .build(), Price.class);

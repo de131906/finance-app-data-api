@@ -14,15 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import de.gp.finance.data.model.BaseDocument;
 
 public abstract class BaseService<E extends BaseDocument> {
+
+	private static final String DOC_TYPE = "docType";
     
     @Autowired
-	private Database database;
+	protected Database database;
 
 	protected List<E> getAll(Class<E> clazz) throws IOException {
-		return database.query(new QueryBuilder(
-            Expression.eq("docType", clazz.getSimpleName()))
-        .build(), clazz).getDocs().stream().map(e -> { return setupDocument(e); })
-		.collect(Collectors.toList());
+		return database.query(new QueryBuilder(Expression.eq(DOC_TYPE, clazz.getSimpleName()))
+        	.build(), clazz).getDocs()
+			.stream().map(e -> { return setupDocument(e); })
+			.collect(Collectors.toList());
 	}
 
 	protected E getById(String id, Class<E> clazz) {
@@ -49,9 +51,5 @@ public abstract class BaseService<E extends BaseDocument> {
 		}
 	}
 
-	protected Database getDatabase() {
-		return database;
-	}
-
-    protected abstract E setupDocument(E entity);
+	protected abstract E setupDocument(E entity);
 }
